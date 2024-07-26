@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 align="center">
+        Search Product
+    </h1>
+
+    <table align="center" border="1">
+        <form method="POST">
+            {% csrf_token %}
+            <tr>
+                <td>Product Name</td>
+                <td><input type="text" name="search" placeholder="Product Name"></td>
+            </tr>
+            <tr>
+                <th colspan="2"><input type="submit" name="submit" value="Search"></td>
+            </tr>
+        </form>
+    </table>
+    <br><br><br>
+    <table align="center" border="1">
+        <tr>
+            <th>Product Name</th>
+            <th>Product Price</th>
+            <th>Product Image</th>
+        </tr>
+        {% for x in data %}
+        <tr>
+            <td>{{  x.name  }}</td>
+            <td>{{  x.price }}</td>
+            <td><img src="{{ x.image.url }}" width="100" height="100"></td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+</body>
+</html>
